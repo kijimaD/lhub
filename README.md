@@ -12,6 +12,7 @@
 
 ```bash
 k3d cluster create dev \
+  --registry-create dev-registry:0.0.0.0:5555 \
   --volume /home/violet/Project:/mnt/Project@server:0 \
   --volume /home/violet/Public:/mnt/Public@server:0 \
   --volume /home/violet/roam:/mnt/roam@server:0 \

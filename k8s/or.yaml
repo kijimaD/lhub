@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: or-server
-        image: or-server:manual
-        imagePullPolicy: Never
+        image: k3d-dev-registry:5000/or-server
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         workingDir: /work

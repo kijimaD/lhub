@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: srd-server
-        image: srd-server:latest
-        imagePullPolicy: Never
+        image: k3d-dev-registry:5000/srd-server
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         volumeMounts:
