@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opv-server
+  labels:
+    app: opv-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opv-server
+  template:
+    metadata:
+      labels:
+        app: opv-server
+    spec:
+      containers:
+      - name: opv-server
+        image: opv-server:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8007
+        env:
+        - name: EMACS_SOCKET_NAME
+          value: /run/user/1000/emacs/server
+        volumeMounts:
+        - name: emacs-socket
+          mountPath: /run/user/1000/emacs
+          readOnly: true
+      volumes:
+      - name: emacs-socket
+        hostPath:
+          path: /run/user/1000/emacs
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opv-server
+spec:
+  selector:
+    app: opv-server
+  ports:
+  - port: 8007
+    targetPort: 8007

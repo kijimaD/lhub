@@ -26,6 +26,16 @@ spec:
             name: srd-server
             port:
               number: 8000
+  - host: opv.localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: opv-server
+            port:
+              number: 8007
   - host: q.localhost
     http:
       paths:
