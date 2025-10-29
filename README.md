@@ -1,12 +1,4 @@
-# lhub - ローカル開発環境管理
-
-複数のアプリケーションをKubernetesクラスターで一元管理する開発環境。
-
-## 構成
-
-- **k3d**: ローカルKubernetesクラスター
-- **Tilt**: 自動ビルド・デプロイツール
-- **Ingress**: ドメインベースルーティング
+複数のLAN用アプリケーションをKubernetesクラスターで一元管理する。
 
 ## クラスター作成
 
@@ -38,10 +30,3 @@ tilt down
 ```bash
 k3d cluster delete dev
 ```
-
-## 新しいアプリの追加
-
-1. `k8s/新アプリ.yaml` を作成（Deployment + Service）
-2. `Tiltfile` にビルド設定を追加
-3. `Tiltfile` のk8s_yamlとk8s_resourceにリソースを追加
-4. Tiltが自動的に変更を検知してデプロイ
