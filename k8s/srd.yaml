@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srd-server
+  labels:
+    app: srd-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: srd-server
+  template:
+    metadata:
+      labels:
+        app: srd-server
+    spec:
+      containers:
+      - name: srd-server
+        image: srd-server:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: pdfs
+          mountPath: /app/pdfs
+      volumes:
+      - name: pdfs
+        hostPath:
+          path: /mnt/Project/srd
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srd-server
+spec:
+  selector:
+    app: srd-server
+  ports:
+  - port: 8000
+    targetPort: 8000

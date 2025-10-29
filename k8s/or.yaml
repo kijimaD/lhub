@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: or-server
+  labels:
+    app: or-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: or-server
+  template:
+    metadata:
+      labels:
+        app: or-server
+    spec:
+      containers:
+      - name: or-server
+        image: or-server:manual
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        workingDir: /work
+        command: ["bash", "-c", "mdbook serve -p 3000 -n 0.0.0.0"]
+        volumeMounts:
+        - name: source
+          mountPath: /work
+      volumes:
+      - name: source
+        hostPath:
+          path: /mnt/Project/or
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: or-server
+spec:
+  selector:
+    app: or-server
+  ports:
+  - port: 3000
+    targetPort: 3000
