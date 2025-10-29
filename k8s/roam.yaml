@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roam-server
+  labels:
+    app: roam-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roam-server
+  template:
+    metadata:
+      labels:
+        app: roam-server
+    spec:
+      containers:
+      - name: roam-server
+        image: nginx:1.27
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: public
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: public
+        hostPath:
+          path: /mnt/roam/public
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roam-server
+spec:
+  selector:
+    app: roam-server
+  ports:
+  - port: 80
+    targetPort: 80

@@ -31,6 +31,7 @@ k8s_yaml([
         'k8s/opv.yaml',
         'k8s/q.yaml',
         'k8s/mypdfs.yaml',
+        'k8s/roam.yaml',
         'k8s/ingress.yaml',
         ])
 
@@ -40,3 +41,4 @@ k8s_resource('srd-server', port_forwards='0.0.0.0:8013:8000', labels=['apps'])
 k8s_resource('opv-server', port_forwards='0.0.0.0:8007:8007', labels=['apps'])
 k8s_resource('q-server', port_forwards='0.0.0.0:8014:8000', labels=['apps'])
 k8s_resource('mypdfs-server', port_forwards='0.0.0.0:8015:8000', labels=['apps'])
+k8s_resource('roam-server', port_forwards='0.0.0.0:8005:80', labels=['apps'])
