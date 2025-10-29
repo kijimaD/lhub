@@ -26,3 +26,13 @@ spec:
             name: srd-server
             port:
               number: 8000
+  - host: q.localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: q-server
+            port:
+              number: 8000

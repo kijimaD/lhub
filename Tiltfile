@@ -18,9 +18,10 @@ custom_build(
 )
 
 # Kubernetesマニフェストを適用
-k8s_yaml(['k8s/or.yaml', 'k8s/srd.yaml', 'k8s/ingress.yaml'])
+k8s_yaml(['k8s/or.yaml', 'k8s/srd.yaml', 'k8s/q.yaml', 'k8s/ingress.yaml'])
 
 # リソース定義（ブラウザUIでの表示用）
 # srd-serverはor-serverの後にビルド（k3d-tools競合回避）
 k8s_resource('or-server', port_forwards='8008:3000', labels=['apps'])
 k8s_resource('srd-server', port_forwards='8013:8000', labels=['apps'], resource_deps=['or-server'])
+k8s_resource('q-server', port_forwards='8014:8000', labels=['apps'], resource_deps=['srd-server'])

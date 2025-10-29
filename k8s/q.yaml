@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: q-server
+  labels:
+    app: q-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: q-server
+  template:
+    metadata:
+      labels:
+        app: q-server
+    spec:
+      containers:
+      - name: q-server
+        image: ghcr.io/kijimad/srd:main
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: pdfs
+          mountPath: /app/pdfs
+      volumes:
+      - name: pdfs
+        hostPath:
+          path: /mnt/Public/q/public
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: q-server
+spec:
+  selector:
+    app: q-server
+  ports:
+  - port: 8000
+    targetPort: 8000
