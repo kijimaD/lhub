@@ -36,9 +36,9 @@ k8s_yaml([
         ])
 
 # リソース定義（ブラウザUIでの表示用）
-k8s_resource('or-server', port_forwards='0.0.0.0:8008:3000', labels=['apps'])
-k8s_resource('srd-server', port_forwards='0.0.0.0:8013:8000', labels=['apps'])
-k8s_resource('opv-server', port_forwards='0.0.0.0:8007:8007', labels=['apps'])
-k8s_resource('q-server', port_forwards='0.0.0.0:8014:8000', labels=['apps'])
-k8s_resource('mypdfs-server', port_forwards='0.0.0.0:8015:8000', labels=['apps'])
-k8s_resource('roam-server', port_forwards='0.0.0.0:8005:80', labels=['apps'])
+k8s_resource('or-server', links=['http://or.lan'], labels=['apps'])
+k8s_resource('srd-server', links=['http://srd.lan'], labels=['apps'])
+k8s_resource('opv-server', links=['http://opv.lan'], labels=['apps'])
+k8s_resource('q-server', links=['http://q.lan'], labels=['apps'])
+k8s_resource('mypdfs-server', links=['http://mypdfs.lan'], labels=['apps'])
+k8s_resource('roam-server', links=['http://roam.lan'], labels=['apps'])

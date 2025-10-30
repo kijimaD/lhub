@@ -5,6 +5,7 @@
 ```bash
 k3d cluster create dev \
   --registry-create dev-registry:0.0.0.0:5555 \
+  -p "80:80@loadbalancer" \
   --volume ~/Project:/mnt/Project@server:0 \
   --volume ~/Public:/mnt/Public@server:0 \
   --volume ~/roam:/mnt/roam@server:0 \
