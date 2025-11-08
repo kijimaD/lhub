@@ -46,16 +46,6 @@ spec:
             name: q-server
             port:
               number: 8000
-  - host: mypdfs.lan
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: mypdfs-server
-            port:
-              number: 8000
   - host: roam.lan
     http:
       paths:

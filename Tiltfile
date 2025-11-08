@@ -28,7 +28,6 @@ k8s_yaml([
         'k8s/srd.yaml',
         'k8s/opv.yaml',
         'k8s/q.yaml',
-        'k8s/mypdfs.yaml',
         'k8s/roam.yaml',
         'k8s/ingress.yaml',
         ])
@@ -38,5 +37,4 @@ k8s_resource('or-server', links=['http://or.lan'], labels=['apps'])
 k8s_resource('srd-server', links=['http://srd.lan'], labels=['apps'])
 k8s_resource('opv-server', links=['http://opv.lan'], labels=['apps'])
 k8s_resource('q-server', links=['http://q.lan'], labels=['apps'])
-k8s_resource('mypdfs-server', links=['http://mypdfs.lan'], labels=['apps'])
 k8s_resource('roam-server', links=['http://roam.lan'], labels=['apps'])
