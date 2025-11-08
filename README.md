@@ -4,7 +4,7 @@
 
 ```bash
 k3d cluster create lhub \
-  --registry-create lhub-registry:0.0.0.0:5555 \
+  --registry-create lhub-registry \
   -p "80:80@loadbalancer" \
   --volume ~/Project:/mnt/Project@server:0 \
   --volume ~/Public:/mnt/Public@server:0 \
