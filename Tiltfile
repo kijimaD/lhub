@@ -1,25 +1,25 @@
 # k3dクラスターを許可
-allow_k8s_contexts('k3d-dev')
+allow_k8s_contexts('k3d-lhub')
 
 # k3dレジストリのアドレス
 default_registry('localhost:5555')
 
 # or-server
 docker_build(
-  'k3d-dev-registry:5000/or-server',
+  'k3d-lhub-registry:5000/or-server',
   '../or',
   target='app',
 )
 
 # srd-server
 docker_build(
-  'k3d-dev-registry:5000/srd-server',
+  'k3d-lhub-registry:5000/srd-server',
   '../srd',
 )
 
 # opv-server
 docker_build(
-  'k3d-dev-registry:5000/opv-server',
+  'k3d-lhub-registry:5000/opv-server',
   '../opv',
   target='app',
 )

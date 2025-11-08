@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: or-server
-        image: k3d-dev-registry:5000/or-server
+        image: k3d-lhub-registry:5000/or-server
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

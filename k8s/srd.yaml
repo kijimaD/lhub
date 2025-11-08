@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: srd-server
-        image: k3d-dev-registry:5000/srd-server
+        image: k3d-lhub-registry:5000/srd-server
         imagePullPolicy: Always
         ports:
         - containerPort: 8000

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: opv-server
-        image: k3d-dev-registry:5000/opv-server
+        image: k3d-lhub-registry:5000/opv-server
         imagePullPolicy: Always
         ports:
         - containerPort: 8007
