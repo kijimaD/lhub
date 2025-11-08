@@ -1,4 +1,5 @@
-# k3dクラスターを許可
+# k3dクラスターに自動切り替え
+k8s_context('k3d-lhub')
 allow_k8s_contexts('k3d-lhub')
 
 # or-server
