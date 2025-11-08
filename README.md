@@ -6,9 +6,10 @@
 k3d cluster create lhub \
   --registry-create lhub-registry \
   -p "80:80@loadbalancer" \
-  --volume ~/Project:/mnt/Project@server:0 \
-  --volume ~/Public:/mnt/Public@server:0 \
-  --volume ~/roam:/mnt/roam@server:0 \
+  --volume ~/Project/or:/mnt/Project/or@server:0 \
+  --volume ~/Project/srd:/mnt/Project/srd@server:0 \
+  --volume ~/Public/q/public:/mnt/Public/q/public@server:0 \
+  --volume ~/roam/public:/mnt/roam/public@server:0 \
   --volume /run/user/1000/emacs:/run/user/1000/emacs@server:0
 ```
 
